@@ -7,7 +7,6 @@ module.exports.login = async (options) => {
     return new Promise(async (resolve, reject) => {
         options.mongoClient.connect(async (err, client) => {
             var body = options.body
-            console.log("body", body)
             try {
                 var db = client.db("manojBade");
                 var query = { userName: body.userName };
