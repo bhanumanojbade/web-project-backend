@@ -19,6 +19,26 @@ router.post('/login', async function (req, res, next) {
   });
 
   
+  router.get('/products', async function (req, res, next) {
+    let options = {};
+    options.mongoClient = req.mongoClient;
+    options.body = req.body;
+      app.getAllProducts(options).then((result) => {
+        res.status(result.status).send(result.response)
+      }).catch((result) =>
+        res.status(result.status).send(result.response)
+      )
+  });
 
+  router.post('/signUp', async function (req, res, next) {
+    let options = {};
+    options.mongoClient = req.mongoClient;
+    options.body = req.body;
+      app.signUp(options).then((result) => {
+        res.status(result.status).send(result.response)
+      }).catch((result) =>
+        res.status(result.status).send(result.response)
+      )
+  });
 
 module.exports = router;
